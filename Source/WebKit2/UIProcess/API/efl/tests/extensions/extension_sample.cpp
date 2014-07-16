@@ -23,13 +23,13 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <WebKit/WKBundleInitialize.h>
+#include "EWebKit_Extension.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void WKBundleInitialize(WKBundleRef bundle, WKTypeRef initializationUserData)
+void ewk_extension_init(Ewk_Extension *)
 {
 }
 
