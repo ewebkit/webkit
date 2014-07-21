@@ -31,17 +31,39 @@
 #include "WKBundle.h"
 #include "WKBundleAPICast.h"
 #include "ewk_extension_private.h"
+#include "ewk_page_private.h"
 
 using namespace WebKit;
 
-void EwkExtension::didCreatePage(WKBundleRef, WKBundlePageRef, const void*)
+static inline EwkExtension* toEwkExtendion(const void* clientInfo)
 {
-    notImplemented();
+    return const_cast<EwkExtension*>(static_cast<const EwkExtension*>(clientInfo));
 }
 
-void EwkExtension::willDestroyPage(WKBundleRef, WKBundlePageRef, const void*)
+void EwkExtension::didCreatePage(WKBundleRef, WKBundlePageRef wkPage, const void* clientInfo)
 {
-    notImplemented();
+    EwkExtension* self = toEwkExtendion(clientInfo);
+    WebPage* page = toImpl(wkPage);
+
+    EwkPage* ewkPage = new EwkPage(page);
+    self->m_pageMap.add(page, std::unique_ptr<EwkPage>(ewkPage));
+
+    for (auto& it : self->m_clients) {
+        if (it->did_Create_Page)
+            it->did_Create_Page(ewkPage, it->data);
+    }
+}
+
+void EwkExtension::willDestroyPage(WKBundleRef, WKBundlePageRef wkPage, const void* clientInfo)
+{
+    EwkExtension* self = toEwkExtendion(clientInfo);
+    WebPage* page = toImpl(wkPage);
+
+    for (auto& it : self->m_clients) {
+        if (it->will_Destroy_Page)
+            it->will_Destroy_Page(self->m_pageMap.get(page), it->data);
+    }
+    self->m_pageMap.remove(page);
 }
 
 void EwkExtension::didReceiveMessage(WKBundleRef, WKStringRef, WKTypeRef, const void*)
@@ -79,10 +101,23 @@ void EwkExtension::append(Ewk_Extension_Client* client)
     m_clients.append(client);
 }
 
-void ewk_extension_client_set(Ewk_Extension* extension, Ewk_Extension_Client* client)
+void EwkExtension::remove(Ewk_Extension_Client* client)
+{
+    m_clients.remove(m_clients.find(client));
+}
+
+void ewk_extension_client_add(Ewk_Extension* extension, Ewk_Extension_Client* client)
 {
     EINA_SAFETY_ON_NULL_RETURN(extension);
     EINA_SAFETY_ON_NULL_RETURN(client);
 
     extension->append(client);
+}
+
+void ewk_extension_client_del(Ewk_Extension* extension, Ewk_Extension_Client* client)
+{
+    EINA_SAFETY_ON_NULL_RETURN(extension);
+    EINA_SAFETY_ON_NULL_RETURN(client);
+
+    extension->remove(client);
 }

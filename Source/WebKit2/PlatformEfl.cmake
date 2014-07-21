@@ -174,6 +174,7 @@ list(APPEND WebKit2_SOURCES
     WebProcess/Cookies/soup/WebKitSoupCookieJarSqlite.cpp
 
     WebProcess/InjectedBundle/API/efl/ewk_extension.cpp
+    WebProcess/InjectedBundle/API/efl/ewk_page.cpp
 
     WebProcess/InjectedBundle/efl/InjectedBundleEfl.cpp
 
@@ -404,6 +405,7 @@ set(EWebKit2_HEADERS
 set(EWebKit2_Extension_HEADERS
     "${CMAKE_CURRENT_SOURCE_DIR}/WebProcess/InjectedBundle/API/efl/EWebKit_Extension.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/WebProcess/InjectedBundle/API/efl/ewk_extension.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/WebProcess/InjectedBundle/API/efl/ewk_page.h"
 )
 
 install(FILES ${EWebKit2_HEADERS} DESTINATION include/${WebKit2_OUTPUT_NAME}-${PROJECT_VERSION_MAJOR})

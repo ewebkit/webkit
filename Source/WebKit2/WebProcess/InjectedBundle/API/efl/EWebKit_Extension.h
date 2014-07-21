@@ -59,5 +59,6 @@
 #define EWebKit_Extension_h
 
 #include "ewk_extension.h"
+#include "ewk_page.h"
 
 #endif // EWebKit_Extension_h

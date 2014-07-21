@@ -30,7 +30,10 @@
 
 namespace WebKit {
 class InjectedBundle;
+class WebPage;
 }
+
+class EwkPage;
 
 class EwkExtension {
 public:
@@ -38,14 +41,16 @@ public:
     ~EwkExtension();
 
     void append(Ewk_Extension_Client*);
+    void remove(Ewk_Extension_Client*);
 
+private:
     static void didCreatePage(WKBundleRef, WKBundlePageRef, const void*);
     static void willDestroyPage(WKBundleRef, WKBundlePageRef, const void*);
     static void didReceiveMessage(WKBundleRef, WKStringRef, WKTypeRef, const void*);
     static void didReceiveMessageToPage(WKBundleRef, WKBundlePageRef, WKStringRef, WKTypeRef, const void*);
 
-private:
     Vector<Ewk_Extension_Client*> m_clients;
+    HashMap<WebKit::WebPage*, std::unique_ptr<EwkPage>> m_pageMap;
 };
 
 #endif // ewk_extension_private_h

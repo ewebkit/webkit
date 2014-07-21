@@ -23,49 +23,29 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
- * @file    ewk_extension.h
- * @brief   Describes the Ewk_Extension API.
- */
+#ifndef ewk_page_private_h
+#define ewk_page_private_h
 
-#ifndef ewk_extension_h
-#define ewk_extension_h
+typedef struct EwkPageClient Ewk_Page_Client;
 
-#include <Eina.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-typedef struct EwkPage Ewk_Page;
-
-/**
- * Declare Ewk_Extension.
- */
-typedef struct EwkExtension Ewk_Extension;
-
-/**
- * Declare Ewk_Extension_Initialize_Function.
- *
- * @brief  Type definition for the entry of the extension.
- *
- */
-typedef void *(*Ewk_Extension_Initialize_Function)(Ewk_Extension *bundle, void *reserved);
-
-struct EwkExtensionClient {
-    int version;
-    void *data;
-
-    void (*did_Create_Page)(Ewk_Page* page, void *data);
-    void (*will_Destroy_Page)(Ewk_Page* page, void *data);
-};
-typedef struct EwkExtensionClient Ewk_Extension_Client;
-
-EAPI void ewk_extension_client_add(Ewk_Extension *extension, Ewk_Extension_Client *client);
-EAPI void ewk_extension_client_del(Ewk_Extension *extension, Ewk_Extension_Client *client);
-
-#ifdef __cplusplus
+namespace WebKit {
+class WebPage;
 }
-#endif
 
-#endif // ewk_extension_h
+class EwkPage {
+public:
+    explicit EwkPage(WebKit::WebPage*);
+
+    WebKit::WebPage* page() { return m_page; }
+
+    void append(Ewk_Page_Client*);
+    void remove(Ewk_Page_Client*);
+
+private:
+    static void didFinishDocumentLoadForFrame(WKBundlePageRef, WKBundleFrameRef, WKTypeRef*, const void *);
+
+    WebKit::WebPage* m_page;
+    Vector<Ewk_Page_Client*> m_clients;
+};
+
+#endif // ewk_page_private_h

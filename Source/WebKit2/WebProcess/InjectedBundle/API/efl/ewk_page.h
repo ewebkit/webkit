@@ -24,45 +24,33 @@
  */
 
 /**
- * @file    ewk_extension.h
- * @brief   Describes the Ewk_Extension API.
+ * @file    ewk_page.h
+ * @brief   Describes the Ewk_Page API.
  */
 
-#ifndef ewk_extension_h
-#define ewk_extension_h
+#ifndef ewk_page_h
+#define ewk_page_h
 
 #include <Eina.h>
+#include <JavaScriptCore/JSBase.h>
+
+typedef struct EwkPage Ewk_Page;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef struct EwkPage Ewk_Page;
-
-/**
- * Declare Ewk_Extension.
- */
-typedef struct EwkExtension Ewk_Extension;
-
-/**
- * Declare Ewk_Extension_Initialize_Function.
- *
- * @brief  Type definition for the entry of the extension.
- *
- */
-typedef void *(*Ewk_Extension_Initialize_Function)(Ewk_Extension *bundle, void *reserved);
-
-struct EwkExtensionClient {
+struct EwkPageClient {
     int version;
     void *data;
 
-    void (*did_Create_Page)(Ewk_Page* page, void *data);
-    void (*will_Destroy_Page)(Ewk_Page* page, void *data);
+    void (*load_finished)(Ewk_Page* page, void *data);
 };
-typedef struct EwkExtensionClient Ewk_Extension_Client;
+typedef struct EwkPageClient Ewk_Page_Client;
 
-EAPI void ewk_extension_client_add(Ewk_Extension *extension, Ewk_Extension_Client *client);
-EAPI void ewk_extension_client_del(Ewk_Extension *extension, Ewk_Extension_Client *client);
+EAPI JSGlobalContextRef ewk_page_js_global_context_get(Ewk_Page *page);
+
+EAPI void ewk_page_client_add(Ewk_Page *page, Ewk_Page_Client *client);
 
 #ifdef __cplusplus
 }
