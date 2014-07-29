@@ -769,3 +769,19 @@ Eina_Bool ewk_view_contents_size_get(const Evas_Object* ewkView, Evas_Coord* wid
 
     return true;
 }
+
+void ewk_view_message_post_to_extensions(const Evas_Object* ewkView, const char* name, const Eina_Value* body)
+{
+    EWK_VIEW_IMPL_GET_OR_RETURN(ewkView, impl);
+
+    WKRetainPtr<WKStringRef> messageName(AdoptWK, WKStringCreateWithUTF8CString(name));
+    WKRetainPtr<WKTypeRef> messageBody;
+
+    const Eina_Value_Type* type = eina_value_type_get(body);
+    if (type == EINA_VALUE_TYPE_STRINGSHARE || type == EINA_VALUE_TYPE_STRING) {
+        const char* value;
+        eina_value_get(body, &value);
+        messageBody = adoptWK(WKStringCreateWithUTF8CString(value));
+    }
+    WKPagePostMessageToInjectedBundle(impl->wkPage(), messageName.get(), messageBody.get());
+}

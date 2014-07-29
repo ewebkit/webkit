@@ -45,6 +45,7 @@ struct EwkPageClient {
     void *data;
 
     void (*load_finished)(Ewk_Page* page, void *data);
+    void (*message_received)(Ewk_Page *page, const char *name, const Eina_Value* value, void *data);
 };
 typedef struct EwkPageClient Ewk_Page_Client;
 

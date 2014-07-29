@@ -41,6 +41,8 @@ public:
     void append(Ewk_Page_Client*);
     void remove(Ewk_Page_Client*);
 
+    void didReceiveMessage(const char* name, const Eina_Value* value);
+
 private:
     static void didFinishDocumentLoadForFrame(WKBundlePageRef, WKBundleFrameRef, WKTypeRef*, const void *);
 

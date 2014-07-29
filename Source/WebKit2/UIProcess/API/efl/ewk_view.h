@@ -943,6 +943,8 @@ EAPI void ewk_view_bg_color_get(const Evas_Object *o, int *r, int *g, int *b, in
  */
 EAPI Eina_Bool ewk_view_contents_size_get(const Evas_Object *o, Evas_Coord *width, Evas_Coord *height);
 
+EAPI void ewk_view_message_post_to_extensions(const Evas_Object *o, const char *name, const Eina_Value *body);
+
 #ifdef __cplusplus
 }
 #endif

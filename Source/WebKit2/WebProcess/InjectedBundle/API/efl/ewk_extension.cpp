@@ -32,6 +32,9 @@
 #include "WKBundleAPICast.h"
 #include "ewk_extension_private.h"
 #include "ewk_page_private.h"
+#include <WebKit/WKString.h>
+#include <WebKit/WKType.h>
+#include <wtf/text/CString.h>
 
 using namespace WebKit;
 
@@ -68,12 +71,31 @@ void EwkExtension::willDestroyPage(WKBundleRef, WKBundlePageRef wkPage, const vo
 
 void EwkExtension::didReceiveMessage(WKBundleRef, WKStringRef, WKTypeRef, const void*)
 {
+    fprintf(stderr, "%s\n", __func__);
     notImplemented();
 }
 
-void EwkExtension::didReceiveMessageToPage(WKBundleRef, WKBundlePageRef, WKStringRef, WKTypeRef, const void*)
+void EwkExtension::didReceiveMessageToPage(WKBundleRef, WKBundlePageRef wkPage, WKStringRef messageName, WKTypeRef messageBody, const void* clientInfo)
 {
-    notImplemented();
+    fprintf(stderr, "%s\n", __func__);
+    EwkExtension* self = toEwkExtendion(clientInfo);
+    WebPage* page = toImpl(wkPage);
+
+    CString name = toImpl(messageName)->string().utf8();
+    Eina_Value* value = nullptr;
+
+    // FIXME: Need to support other types.
+    if (messageBody && WKStringGetTypeID() == WKGetTypeID(messageBody)) {
+        value = eina_value_new(EINA_VALUE_TYPE_STRING);
+        CString body = toImpl(static_cast<WKStringRef>(messageBody))->string().utf8();
+        fprintf(stderr, "%s: %s\n", __func__, body.data());
+        eina_value_set(value, body.data());
+    }
+
+    self->m_pageMap.get(page)->didReceiveMessage(name.data(), value);
+
+    if (value)
+        eina_value_free(value);
 }
 
 EwkExtension::EwkExtension(InjectedBundle* bundle)
