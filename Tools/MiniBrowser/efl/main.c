@@ -599,6 +599,12 @@ on_title_changed(void *user_data, Evas_Object *ewk_view, void *event_info)
     const char *title = (const char *)event_info;
 
     title_set(window->elm_window, title, 100);
+
+    //ewk_context_message_post_to_injected_bundle(ewk_view_context_get(ewk_view), "test", "hello");
+    Eina_Value* value = eina_value_new(EINA_VALUE_TYPE_STRING);
+    eina_value_set(value, "hello");
+    ewk_view_message_post_to_extensions(ewk_view, "test", value);
+    eina_value_free(value);
 }
 
 static void

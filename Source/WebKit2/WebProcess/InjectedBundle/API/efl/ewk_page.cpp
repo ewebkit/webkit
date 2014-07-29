@@ -97,6 +97,14 @@ void EwkPage::remove(Ewk_Page_Client* client)
     m_clients.remove(m_clients.find(client));
 }
 
+void EwkPage::didReceiveMessage(const char* name, const Eina_Value* value)
+{
+    for (auto& it : m_clients) {
+        if (it->message_received)
+            it->message_received(this, name, value, it->data);
+    }
+}
+
 void EwkPage::didFinishDocumentLoadForFrame(WKBundlePageRef, WKBundleFrameRef frame, WKTypeRef*, const void *clientInfo)
 {
     if (!WKBundleFrameIsMainFrame(frame))
