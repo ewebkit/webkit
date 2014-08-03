@@ -122,6 +122,7 @@ void WebPopupMenu::hide()
 
     WebProcess::shared().parentProcessConnection()->send(Messages::WebPageProxy::HidePopupMenu(), m_page->pageID());
     m_page->setActivePopupMenu(0);
+    m_popupClient->popupDidHide();
 }
 
 void WebPopupMenu::updateFromElement()
