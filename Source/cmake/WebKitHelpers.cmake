@@ -21,7 +21,8 @@ macro(WEBKIT_SET_EXTRA_COMPILER_FLAGS _target)
         # For GTK+ we will rely on a linker script to deal with symbol visibility on
         # production builds, we want all symbols visible for development builds.
         if (NOT SHARED_CORE AND NOT ${PORT} STREQUAL "GTK")
-            set(OLD_COMPILE_FLAGS "-fvisibility=hidden ${OLD_COMPILE_FLAGS}")
+# Disable just for alpha
+#            set(OLD_COMPILE_FLAGS "-fvisibility=hidden ${OLD_COMPILE_FLAGS}")
         endif ()
 
         get_target_property(TARGET_TYPE ${_target} TYPE)
