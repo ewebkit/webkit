@@ -176,6 +176,8 @@ EAPI Ewk_Context *ewk_context_new(void);
 /**
  * Creates a new Ewk_Context.
  *
+ * DO NOT USE THIS. IT WILL BE DEPRECATED.
+ *
  * The returned Ewk_Context object @b should be unref'ed after use.
  *
  * @param path path of injected bundle library
@@ -185,7 +187,7 @@ EAPI Ewk_Context *ewk_context_new(void);
  * @see ewk_object_unref
  * @see ewk_context_new
  */
-EAPI Ewk_Context *ewk_context_new_with_injected_bundle_path(const char *path);
+EINA_DEPRECATED EAPI Ewk_Context *ewk_context_new_with_injected_bundle_path(const char *path);
 
 /**
  * Gets the application cache manager instance for this @a context.
@@ -371,14 +373,18 @@ EAPI void ewk_context_resource_cache_clear(Ewk_Context *context);
 /**
  * Posts message to injected bundle.
  *
+ * DO NOT USE THIS. IT WILL BE DEPRECATED.
+ *
  * @param context context object to post message to injected bundle
  * @param name message name
  * @param body message body
  */
-EAPI void ewk_context_message_post_to_injected_bundle(Ewk_Context *context, const char *name, const char *body);
+EINA_DEPRECATED EAPI void ewk_context_message_post_to_injected_bundle(Ewk_Context *context, const char *name, const char *body);
 
 /**
  * Sets callback for received injected bundle message.
+ *
+ * DO NOT USE THIS. IT WILL BE DEPRECATED.
  *
  * Client can pass @c NULL for callback to stop listening for messages.
  *
@@ -386,7 +392,7 @@ EAPI void ewk_context_message_post_to_injected_bundle(Ewk_Context *context, cons
  * @param callback callback for received injected bundle message or @c NULL
  * @param user_data user data
  */
-EAPI void ewk_context_message_from_injected_bundle_callback_set(Ewk_Context *context, Ewk_Context_Message_From_Injected_Bundle_Cb callback, void *user_data);
+EINA_DEPRECATED EAPI void ewk_context_message_from_injected_bundle_callback_set(Ewk_Context *context, Ewk_Context_Message_From_Injected_Bundle_Cb callback, void *user_data);
 
 /**
  * Sets a process model for @a context.
