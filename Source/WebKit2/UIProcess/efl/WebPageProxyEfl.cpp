@@ -29,12 +29,14 @@
 #include "EwkView.h"
 #include "NativeWebKeyboardEvent.h"
 #include "NotImplemented.h"
-#include "WebKitVersion.h"
 #include "WebPageMessages.h"
 #include "WebProcessProxy.h"
 #include "WebView.h"
 
 #include <sys/utsname.h>
+
+#define WEBKIT_MAJOR_VERSION 601
+#define WEBKIT_MINOR_VERSION 1
 
 namespace WebKit {
 
