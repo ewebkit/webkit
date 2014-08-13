@@ -56,6 +56,8 @@ typedef enum {
  *
  * @param error error object to query.
  *
+ * @note This is not stable. DO NOT USE THIS.
+ *
  * @return the error type, that may be @c NULL. This pointer is
  *         guaranteed to be eina_stringshare, so whenever possible
  *         save yourself some cpu cycles and use
@@ -68,6 +70,8 @@ EAPI Ewk_Error_Type ewk_error_type_get(const Ewk_Error *error);
  * Query failing URL for this error.
  *
  * URL that failed loading.
+ *
+ * @note This is not stable. DO NOT USE THIS.
  *
  * @param error error object to query.
  *
@@ -82,6 +86,8 @@ EAPI const char *ewk_error_url_get(const Ewk_Error *error);
 /**
  * Query HTTP error code.
  *
+ * @note This is not stable. DO NOT USE THIS.
+ *
  * @param error error object to query.
  *
  * @return the HTTP error code.
@@ -90,6 +96,8 @@ EAPI int ewk_error_code_get(const Ewk_Error *error);
 
 /**
  * Query description for this error.
+ *
+ * @note This is not stable. DO NOT USE THIS.
  *
  * @param error error object to query.
  *
@@ -103,6 +111,8 @@ EAPI const char *ewk_error_description_get(const Ewk_Error *error);
 
 /**
  * Query if error should be treated as a cancellation.
+ *
+ * @note This is not stable. DO NOT USE THIS.
  *
  * @param error error object to query.
  *
