@@ -1,0 +1,26 @@
+==============
+Ewebkit 1.11.0
+==============
+
+Changes since the previous snapshot:
+
+  * WebKit1/EFL was dropped.
+  * fixed color picker bug (<intput type="color">)
+  * refactor vibration API.
+  * Add ewk_application_cache_manager APIs
+  * Add an API to set process model
+  * Add ewk APIs to control TLS error policy on WebContext
+  * Add ewk_view_bg_color_set
+  * Add API to get contents size of current web page.
+  * Removed NETWORK_INFO.
+  * Refactor favicon database APIs
+  * Add ewk_view_fixed_layout_size_set|get()
+  * Use default context for ewk_view_add
+  * Change ewk_view_settings_get to ewk_page_group_settings_get
+  * Add new Public API in ewk_download_job.h to get size of the data already downloaded.
+  * Add a "focus,notfound" signal.
+  * Provide VERSION information in EWebKit2.h like EFL and Elementary.
+  * Media Control of video tag is changed from edj to HTML/javascript.
+  * Enable CSS Filter
+  * Turn off Indexed Database
+  * And, many common webkit(WebCore,JSC) changes.
