@@ -24,7 +24,7 @@
  */
 
 /**
- * @file    EWebKit_Extension.h
+ * @file EWebKit_Extension.h
  * @brief   Contains the header files that are required by ewebkit2-extension.
  *
  * EWebKit_Extension is the way to extend WebProcess of ewebkit2.
@@ -38,20 +38,18 @@
  * void ewk_extension_init(Ewk_Extension *extension)
  * {
  *    // provide Ewk_Extension_Client callbacks as client.
- *    ewk_extension_client_set(extension, &client);
+ *    ewk_extension_client_add(extension, &client);
  * }
  * @endcode
  *
  * And compiles C or C++ files as shared object like below:
  *
- * @verbatim
- * gcc -o libsample.so sample.c -shared -fPIC `pkg-config --cflags --libs eina ewebkit2-extension`
- * @endverbatim
+ * @verbatim gcc -o libsample.so sample.c -shared -fPIC `pkg-config --cflags --libs eina ewebkit2-extension` @endverbatim
  * 
  * Then, install that object into the path which ewk_context_new_with_extensions_path() specifies.
  *
  * @see ewk_context_new_with_extensions_path
- * @see ewk_extension_client_set
+ * @see ewk_extension_client_add
  * @see Ewk_Extension_Initialize_Function
  */
 

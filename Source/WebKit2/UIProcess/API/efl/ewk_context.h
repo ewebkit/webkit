@@ -372,16 +372,16 @@ EAPI Eina_Bool ewk_context_additional_plugin_path_set(Ewk_Context *context, cons
 EAPI void ewk_context_resource_cache_clear(Ewk_Context *context);
 
 /**
- * Posts message to injected bundle.
+ * Posts message to extension.
  *
  * @param context context object to post message to injected bundle
  * @param name message name
  * @param body message body
  */
-EAPI void ewk_context_message_post_to_injected_bundle(Ewk_Context *context, const char *name, const char *body);
+EAPI Eina_Bool ewk_context_message_post_to_extension(Ewk_Context *context, const char *name, const Eina_Value *body);
 
 /**
- * Sets callback for received injected bundle message.
+ * Sets callback for received extension message.
  *
  * Client can pass @c NULL for callback to stop listening for messages.
  *
@@ -389,7 +389,7 @@ EAPI void ewk_context_message_post_to_injected_bundle(Ewk_Context *context, cons
  * @param callback callback for received injected bundle message or @c NULL
  * @param user_data user data
  */
-EAPI void ewk_context_message_from_injected_bundle_callback_set(Ewk_Context *context, Ewk_Context_Message_From_Injected_Bundle_Cb callback, void *user_data);
+EAPI void ewk_context_message_from_extensions_callback_set(Ewk_Context *context, Ewk_Context_Message_From_Injected_Bundle_Cb callback, void *user_data);
 
 /**
  * Sets a process model for @a context.

@@ -35,6 +35,7 @@
 #include <JavaScriptCore/JSBase.h>
 
 typedef struct EwkPage Ewk_Page;
+typedef struct EwkExtension Ewk_Extension;
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,6 +53,8 @@ typedef struct EwkPageClient Ewk_Page_Client;
 EAPI JSGlobalContextRef ewk_page_js_global_context_get(Ewk_Page *page);
 
 EAPI void ewk_page_client_add(Ewk_Page *page, Ewk_Page_Client *client);
+
+EAPI Ewk_Extension *ewk_page_extension_get(Ewk_Page *page);
 
 #ifdef __cplusplus
 }

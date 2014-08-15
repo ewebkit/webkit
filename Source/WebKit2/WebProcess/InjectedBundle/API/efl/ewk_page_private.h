@@ -27,6 +27,7 @@
 #define ewk_page_private_h
 
 typedef struct EwkPageClient Ewk_Page_Client;
+typedef struct EwkExtension Ewk_Extension;
 
 namespace WebKit {
 class WebPage;
@@ -34,7 +35,7 @@ class WebPage;
 
 class EwkPage {
 public:
-    explicit EwkPage(WebKit::WebPage*);
+    explicit EwkPage(WebKit::WebPage*, EwkExtension*);
 
     WebKit::WebPage* page() { return m_page; }
 
@@ -43,10 +44,12 @@ public:
 
     void didReceiveMessage(const char* name, const Eina_Value* value);
 
+    EwkExtension* extension() const { return m_extension; }
 private:
     static void didFinishDocumentLoadForFrame(WKBundlePageRef, WKBundleFrameRef, WKTypeRef*, const void *);
 
     WebKit::WebPage* m_page;
+    EwkExtension* m_extension;
     Vector<Ewk_Page_Client*> m_clients;
 };
 

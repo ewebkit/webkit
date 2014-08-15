@@ -391,11 +391,13 @@ static inline EwkContext* toEwkContext(const void* clientInfo)
 
 void EwkContext::didReceiveMessageFromInjectedBundle(WKContextRef, WKStringRef messageName, WKTypeRef messageBody, const void* clientInfo)
 {
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
     toEwkContext(clientInfo)->processReceivedMessageFromInjectedBundle(messageName, messageBody, nullptr);
 }
 
 void EwkContext::didReceiveSynchronousMessageFromInjectedBundle(WKContextRef, WKStringRef messageName, WKTypeRef messageBody, WKTypeRef* returnData, const void* clientInfo)
 {
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
     toEwkContext(clientInfo)->processReceivedMessageFromInjectedBundle(messageName, messageBody, returnData);
 }
 
@@ -531,18 +533,28 @@ void ewk_context_resource_cache_clear(Ewk_Context* ewkContext)
     impl->clearResourceCache();
 }
 
-void ewk_context_message_post_to_injected_bundle(Ewk_Context* ewkContext, const char* name, const char* body)
+Eina_Bool ewk_context_message_post_to_extension(Ewk_Context* ewkContext, const char* name, const Eina_Value* body)
 {
-    EWK_OBJ_GET_IMPL_OR_RETURN(EwkContext, ewkContext, impl);
-    EINA_SAFETY_ON_NULL_RETURN(name);
-    EINA_SAFETY_ON_NULL_RETURN(body);
+    EWK_OBJ_GET_IMPL_OR_RETURN(EwkContext, ewkContext, impl, false);
+    EINA_SAFETY_ON_NULL_RETURN_VAL(name, false);
+    EINA_SAFETY_ON_NULL_RETURN_VAL(body, false);
+
+    WKRetainPtr<WKTypeRef> messageBody;
+    const Eina_Value_Type* type = eina_value_type_get(body);
+    if (type == EINA_VALUE_TYPE_STRINGSHARE || type == EINA_VALUE_TYPE_STRING) {
+        const char* value;
+        eina_value_get(body, &value);
+        messageBody = adoptWK(WKStringCreateWithUTF8CString(value));
+    } else
+        return false;
 
     WKRetainPtr<WKStringRef> messageName(AdoptWK, WKStringCreateWithUTF8CString(name));
-    WKRetainPtr<WKStringRef> messageBody(AdoptWK, WKStringCreateWithUTF8CString(body));
     WKContextPostMessageToInjectedBundle(impl->wkContext(), messageName.get(), messageBody.get());
+
+    return true;
 }
 
-void ewk_context_message_from_injected_bundle_callback_set(Ewk_Context* ewkContext, Ewk_Context_Message_From_Injected_Bundle_Cb callback, void* userData)
+void ewk_context_message_from_extensions_callback_set(Ewk_Context* ewkContext, Ewk_Context_Message_From_Injected_Bundle_Cb callback, void* userData)
 {
     EWK_OBJ_GET_IMPL_OR_RETURN(EwkContext, ewkContext, impl);
 

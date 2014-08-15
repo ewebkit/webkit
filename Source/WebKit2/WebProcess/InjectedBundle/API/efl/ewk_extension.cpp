@@ -30,6 +30,7 @@
 #include "NotImplemented.h"
 #include "WKBundle.h"
 #include "WKBundleAPICast.h"
+#include "WKRetainPtr.h"
 #include "ewk_extension_private.h"
 #include "ewk_page_private.h"
 #include <WebKit/WKString.h>
@@ -48,7 +49,7 @@ void EwkExtension::didCreatePage(WKBundleRef, WKBundlePageRef wkPage, const void
     EwkExtension* self = toEwkExtendion(clientInfo);
     WebPage* page = toImpl(wkPage);
 
-    EwkPage* ewkPage = new EwkPage(page);
+    EwkPage* ewkPage = new EwkPage(page, self);
     self->m_pageMap.add(page, std::unique_ptr<EwkPage>(ewkPage));
 
     for (auto& it : self->m_clients) {
@@ -99,6 +100,7 @@ void EwkExtension::didReceiveMessageToPage(WKBundleRef, WKBundlePageRef wkPage, 
 }
 
 EwkExtension::EwkExtension(InjectedBundle* bundle)
+    : m_bundle(bundle)
 {
     WKBundleClientV1 wkBundleClient = {
         {
@@ -142,4 +144,26 @@ void ewk_extension_client_del(Ewk_Extension* extension, Ewk_Extension_Client* cl
     EINA_SAFETY_ON_NULL_RETURN(client);
 
     extension->remove(client);
+}
+
+void ewk_extension_message_post(Ewk_Extension* extension, const char* name, const Eina_Value* body)
+{
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
+    EINA_SAFETY_ON_NULL_RETURN(extension);
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
+
+    WKRetainPtr<WKStringRef> messageName(AdoptWK, WKStringCreateWithUTF8CString(name));
+    WKRetainPtr<WKTypeRef> messageBody;
+
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
+    const Eina_Value_Type* type = eina_value_type_get(body);
+    if (type == EINA_VALUE_TYPE_STRINGSHARE || type == EINA_VALUE_TYPE_STRING) {
+        const char* value;
+        eina_value_get(body, &value);
+        messageBody = adoptWK(WKStringCreateWithUTF8CString(value));
+    }
+
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
+    WKBundlePostMessage(toAPI(extension->bundle()), messageName.get(), messageBody.get());
+    fprintf(stderr, "%s:%d\n", __func__, __LINE__);
 }

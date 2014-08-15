@@ -24,6 +24,22 @@
  */
 
 /**
+ * @defgroup Ewk_Extension Ewk Extension
+ * @ingroup EWebKit Extension
+ *
+ * ewebkit2 is based on multi process architecture.
+ * So, user application can not access DOM Objects or JavaScript Objects directly.
+ *
+ * Instead, you can make your own extension by using EWebKit2 Extension.
+ * Ewk Extension is used to comunicate with ewebkit.
+ *
+ * All extensions share one extension instance.
+ *
+ * In order to make your own extension,
+ * you should implement @c Ewk_Extension_Initialize_Function in your shared object.
+ */
+
+/**
  * @file    ewk_extension.h
  * @brief   Describes the Ewk_Extension API.
  */
@@ -40,7 +56,8 @@ extern "C" {
 typedef struct EwkPage Ewk_Page;
 
 /**
- * Declare Ewk_Extension.
+ * Ewk_Extension is basic structure to comunicte with ewebkit.
+ * All extensions share one extension instance.
  */
 typedef struct EwkExtension Ewk_Extension;
 
@@ -63,6 +80,8 @@ typedef struct EwkExtensionClient Ewk_Extension_Client;
 
 EAPI void ewk_extension_client_add(Ewk_Extension *extension, Ewk_Extension_Client *client);
 EAPI void ewk_extension_client_del(Ewk_Extension *extension, Ewk_Extension_Client *client);
+
+EAPI void ewk_extension_message_post(Ewk_Extension *extension, const char *name, const Eina_Value *body);
 
 #ifdef __cplusplus
 }

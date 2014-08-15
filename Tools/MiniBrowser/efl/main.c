@@ -1769,6 +1769,11 @@ create_toolbar_button(Evas_Object *elm_window, const char *icon_name)
     return button;
 }
 
+static void message_callback(const char *name, const char *body, char **ret, void *data)
+{
+    fprintf(stderr, "%s : %s\n", name, body);
+}
+
 static Browser_Window *window_create(Evas_Object *opener, int width, int height)
 {
     Browser_Window *window = calloc(1, sizeof(Browser_Window));
@@ -1943,6 +1948,8 @@ static Browser_Window *window_create(Evas_Object *opener, int width, int height)
     else
         context = ewk_context_default_get();
 
+    fprintf(stderr, "%s(%s)\n", __func__, extensions_path);
+    ewk_context_message_from_extensions_callback_set(context, message_callback, 0);
     Ewk_Page_Group *pageGroup = opener ? ewk_view_page_group_get(opener) : ewk_page_group_create("");
     window->ewk_view = ewk_view_smart_add(evas, smart, context, pageGroup);
 

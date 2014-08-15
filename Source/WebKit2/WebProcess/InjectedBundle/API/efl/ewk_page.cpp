@@ -40,8 +40,9 @@ static inline EwkPage* toEwkPage(const void* clientInfo)
     return const_cast<EwkPage*>(static_cast<const EwkPage*>(clientInfo));
 }
 
-EwkPage::EwkPage(WebPage* page)
+EwkPage::EwkPage(WebPage* page, EwkExtension* extension)
     : m_page(page)
+    , m_extension(extension)
 {
     WKBundlePageLoaderClientV7 loaderClient = {
         {
@@ -142,4 +143,11 @@ void ewk_page_client_del(Ewk_Page* ewkPage, Ewk_Page_Client* client)
     EINA_SAFETY_ON_NULL_RETURN(client);
 
     ewkPage->remove(client);
+}
+
+Ewk_Extension* ewk_page_extension_get(Ewk_Page* ewkPage)
+{
+    EINA_SAFETY_ON_NULL_RETURN_VAL(ewkPage, nullptr);
+
+    return ewkPage->extension();
 }

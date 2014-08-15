@@ -43,12 +43,15 @@ public:
     void append(Ewk_Extension_Client*);
     void remove(Ewk_Extension_Client*);
 
+    WebKit::InjectedBundle* bundle() const { return m_bundle; }
+
 private:
     static void didCreatePage(WKBundleRef, WKBundlePageRef, const void*);
     static void willDestroyPage(WKBundleRef, WKBundlePageRef, const void*);
     static void didReceiveMessage(WKBundleRef, WKStringRef, WKTypeRef, const void*);
     static void didReceiveMessageToPage(WKBundleRef, WKBundlePageRef, WKStringRef, WKTypeRef, const void*);
 
+    WebKit::InjectedBundle* m_bundle;
     Vector<Ewk_Extension_Client*> m_clients;
     HashMap<WebKit::WebPage*, std::unique_ptr<EwkPage>> m_pageMap;
 };

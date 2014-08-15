@@ -19,7 +19,7 @@
  */
 
 /**
- * @file    EWebKit2.h
+ * @defgroup EWebKit Web engine based on WebKit2/EFL port
  * @brief   Contains the header files that are required by WebKit2-EFL.
  *
  * It includes the all header files that are exported to public API.
