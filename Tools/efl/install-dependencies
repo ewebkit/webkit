@@ -81,7 +81,10 @@ function installDependenciesWithApt {
         liborc-0.4-dev \
         libp11-kit-dev \
         libpng12-dev \
+        libpoppler-cpp-dev \
         libpulse-dev \
+        libraw-dev \
+        libspectre-dev \
         libsqlite3-dev \
         libssl-dev \
         libtheora-dev \
