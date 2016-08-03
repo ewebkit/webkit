@@ -6,10 +6,14 @@ What's updated in ewebkit v1.18 ?
 
   1. ewebkit updates
    - Begin to release ewebkit with EFL release
+   - Disable subtle crypto feature because nobody works on it
+   - Support to build on Debian linux
 
   2. WebKit core updates
    - Shadow DOM is enabled
    - ECMAScript 6 specification is supported
-   - MathML is updated 
+   - MathML is updated
+   - See also release notes for Safari preview release 9
+     (https://webkit.org/blog/6800/release-notes-for-safari-technology-preview-release-9/)
 
 
