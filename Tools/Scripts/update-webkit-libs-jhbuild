@@ -33,6 +33,8 @@ if (!$platform) {
 my $wipeOnChange = $ENV{JHBUILD_WIPE_ON_CHANGE} // 1;
 my $force = 0;
 
+my $useEFLTarball = $ENV{USE_EFL_TARBALL};
+
 GetOptions(
     'wipe-on-change!' => \$wipeOnChange,
     'force' => \$force
@@ -147,8 +149,10 @@ if ($wipeOnChange && -e getJhbuildPath()) {
 print "Updating " . $prettyPlatform{$platform} . " port dependencies using jhbuild...\n";
 if (runJhbuild("build") == 0) {
     saveJhbuildMd5();
-    chdir(relativeScriptsDir() . "/../../") or die $!;
-    system("./install-new-efl.sh");
+    if ($useEFLTarball) {
+        chdir(relativeScriptsDir() . "/../../") or die $!;
+        system("./install-new-efl.sh");
+    }
 } else {
     deleteJhbuildMd5();
     die "Failed to build " . $prettyPlatform{$platform} . " port dependencies with jhbuild\n";

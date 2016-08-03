@@ -43,7 +43,12 @@ def init(jhbuildrc_globals, jhbuild_platform):
 
     jhbuildrc_globals["build_policy"] = 'updated'
 
-    __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild.modules')
+    efl_tarball = int(os.environ.get('USE_EFL_TARBALL'))
+    if efl_tarball == 1:
+        __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild-without-efl.modules')
+    else:
+        __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild.modules')
+
     __extra_modulesets = os.environ.get("WEBKIT_EXTRA_MODULESETS", "").split(",")
     jhbuildrc_globals["moduleset"] = [__moduleset_file_uri, ]
     if __extra_modulesets != ['']:

@@ -1,0 +1,15 @@
+
+ewebkit 1.18
+--------------
+
+What's updated in ewebkit v1.18 ?
+
+  1. ewebkit updates
+   - Begin to release ewebkit with EFL release
+
+  2. WebKit core updates
+   - Shadow DOM is enabled
+   - ECMAScript 6 specification is supported
+   - MathML is updated 
+
+
