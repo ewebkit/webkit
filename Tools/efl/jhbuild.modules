@@ -14,7 +14,7 @@
       <dep package="glib"/>
       <dep package="glib-networking"/>
       <dep package="libsoup"/>
-      <dep package="elementary"/>
+      <dep package="efl"/>
       <dep package="libxml2"/>
       <dep package="libxslt"/>
       <dep package="gstreamer"/>
@@ -174,23 +174,10 @@
       <dep package="gstreamer"/>
       <dep package="gst-plugins-base"/>
     </dependencies>
-    <branch module="rel/libs/efl/efl-1.17.0.tar.gz" version="1.17.0"
+    <branch module="rel/libs/efl/efl-1.18.0-beta1.tar.gz" version="1.18.0"
             repo="download.enlightenment.org"
-            hash="sha256:046ff2c5fe769d749278f9d3e5b85e25cb4d1070bd1b8b54ee6831d81739f3c5">
-      <patch file="ecore_remove_warnings.patch" strip="1"/>
+            hash="sha256:5c848da26e2e965f51895da5b87711e97812269af5cb0a200d8bbb86be5a4dbb">
     </branch>
-  </autotools>
-
-  <autotools id="elementary"
-             autogen-sh="configure"
-             autogenargs="--disable-emap --disable-eweather --with-elementary-web-backend=none">
-    <branch module="rel/libs/elementary/elementary-1.17.0.tar.gz" version="1.17.0"
-            repo="download.enlightenment.org"
-            hash="sha256:0004a3038968073f3e7599294933fab72226162d0436dce35d9ec4d3b0478267">
-    </branch>
-    <dependencies>
-        <dep package="efl"/>
-    </dependencies>
   </autotools>
 
   <autotools id="libxml2"

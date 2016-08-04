@@ -43,9 +43,12 @@ def init(jhbuildrc_globals, jhbuild_platform):
 
     jhbuildrc_globals["build_policy"] = 'updated'
 
-    efl_tarball = int(os.environ.get('USE_EFL_TARBALL'))
-    if efl_tarball == 1:
-        __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild-without-efl.modules')
+    if 'USE_EFL_TARBALL' in os.environ:
+        efl_tarball = int(os.environ.get('USE_EFL_TARBALL'))
+        if efl_tarball == 1:
+            __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild-without-efl.modules')
+        else:
+            __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild.modules')
     else:
         __moduleset_file_uri = 'file://' + os.path.join(__tools_directory, 'jhbuild.modules')
 
