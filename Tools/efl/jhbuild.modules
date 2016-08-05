@@ -168,15 +168,15 @@
  </autotools>
 
   <autotools id="efl" autogen-sh="configure"
-             autogenargs="--disable-fribidi --disable-audio --disable-libmount --disable-physics --enable-lua-old --enable-i-really-know-what-i-am-doing-and-that-this-will-probably-break-things-and-i-will-fix-them-myself-and-send-patches-abb">
+             autogenargs="--disable-fribidi --disable-audio --disable-libmount --disable-physics --enable-i-really-know-what-i-am-doing-and-that-this-will-probably-break-things-and-i-will-fix-them-myself-and-send-patches-abb">
     <dependencies>
       <dep package="fontconfig"/>
       <dep package="gstreamer"/>
       <dep package="gst-plugins-base"/>
     </dependencies>
-    <branch module="rel/libs/efl/efl-1.18.0-beta1.tar.gz" version="1.18.0"
+    <branch module="rel/libs/efl/efl-1.18.0-beta2.tar.gz" version="1.18.0"
             repo="download.enlightenment.org"
-            hash="sha256:5c848da26e2e965f51895da5b87711e97812269af5cb0a200d8bbb86be5a4dbb">
+            hash="sha256:2a910deeb445b43f0515c5b265a5e1b460a9ae5e23c1449e75c4444336c3e31f">
     </branch>
   </autotools>
 
