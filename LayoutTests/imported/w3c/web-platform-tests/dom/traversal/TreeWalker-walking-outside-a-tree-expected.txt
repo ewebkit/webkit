@@ -1,5 +1,0 @@
-[Acid3 - Test 006a] walking outside a tree
-
-
-PASS walking outside a tree 
-

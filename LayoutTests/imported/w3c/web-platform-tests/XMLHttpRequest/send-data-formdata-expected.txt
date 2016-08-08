@@ -1,3 +1,0 @@
-
-PASS XmlHttpRequest: The send() method: FormData data 
-

@@ -1,7 +1,0 @@
-Testing WebInspector.Object.
-
-
-== Running test suite: Object
--- Running test case: Events propagation
-Dispatch count: 1
-

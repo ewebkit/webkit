@@ -1,6 +1,0 @@
-Test TreeWalker with skipping
-
-
-PASS Testing nextSibling 
-PASS Testing previousSibling 
-

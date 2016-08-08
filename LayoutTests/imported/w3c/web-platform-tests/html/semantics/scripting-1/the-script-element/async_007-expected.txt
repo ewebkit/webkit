@@ -1,4 +1,0 @@
-312
-
-PASS Ordered async script execution when script.async == false 
-

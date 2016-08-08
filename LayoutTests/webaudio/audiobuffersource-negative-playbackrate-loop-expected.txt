@@ -1,2 +1,0 @@
-PASS Test looping playback at -1 playbackRate
-

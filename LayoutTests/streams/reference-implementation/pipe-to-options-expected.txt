@@ -1,5 +1,0 @@
-
-PASS Piping with no options and a destination error 
-PASS Piping with { preventCancel: false } and a destination error 
-PASS Piping with { preventCancel: true } and a destination error 
-

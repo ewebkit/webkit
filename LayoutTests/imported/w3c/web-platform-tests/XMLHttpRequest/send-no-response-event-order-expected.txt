@@ -1,3 +1,0 @@
-
-PASS XMLHttpRequest: The send() method: event order when there is no response entity body 
-

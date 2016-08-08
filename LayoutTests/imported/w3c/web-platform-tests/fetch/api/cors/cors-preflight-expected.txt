@@ -1,3 +1,0 @@
-
-PASS Fetch: Check cors fetches requiring preflight 
-

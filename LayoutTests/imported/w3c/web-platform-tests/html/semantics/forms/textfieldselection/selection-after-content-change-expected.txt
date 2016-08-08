@@ -1,3 +1,0 @@
-
-PASS Selection indices after reseting content 
-

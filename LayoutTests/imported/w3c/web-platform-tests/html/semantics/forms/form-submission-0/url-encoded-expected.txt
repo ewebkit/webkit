@@ -1,5 +1,0 @@
-
-
-PASS text.simple 
-PASS textarea.simple 
-

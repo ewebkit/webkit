@@ -1,5 +1,0 @@
-<tr><td>Filler 
-Text
-
-PASS document.write plaintext 
-

@@ -1,6 +1,0 @@
-
-PASS Handling of property names that look like negative integers 
-PASS Handling of property names that look like small nonnegative integers 
-PASS Handling of property names that look like integers around 2^31 
-PASS Handling of property names that look like integers around 2^32 
-

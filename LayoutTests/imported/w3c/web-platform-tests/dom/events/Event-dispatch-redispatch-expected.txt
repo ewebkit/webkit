@@ -1,3 +1,0 @@
-
-PASS EventTarget#dispatchEvent(): redispatching a native event 
-

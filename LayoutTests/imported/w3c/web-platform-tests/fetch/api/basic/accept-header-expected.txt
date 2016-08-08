@@ -1,3 +1,0 @@
-
-PASS Request through fetch should have 'accept' header with value '*/*' 
-

@@ -1,3 +1,0 @@
-
-FAIL XMLHttpRequest: send() - unserializable Document assert_throws: function "function () { client.send(input) }" did not throw
-

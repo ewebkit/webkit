@@ -1,7 +1,0 @@
-Test of lastElementChild
-
-The result of this test is logged above.
-
-
-PASS lastElementChild 
-

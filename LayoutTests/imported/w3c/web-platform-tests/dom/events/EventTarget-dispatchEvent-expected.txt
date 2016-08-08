@@ -1,4 +1,0 @@
-CONSOLE MESSAGE: line 20: TypeError: aliases.forEach is not a function. (In 'aliases.forEach', 'aliases.forEach' is undefined)
-
-PASS Calling dispatchEvent(null). 
-

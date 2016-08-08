@@ -1,7 +1,0 @@
-te xt
-te; xt test link #foo te xt namespace
-text
-xt te
-
-PASS generic element listed 
-

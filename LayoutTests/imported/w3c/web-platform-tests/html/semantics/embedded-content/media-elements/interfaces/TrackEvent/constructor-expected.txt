@@ -1,4 +1,0 @@
-
-PASS TrackEvent constructor, one arg 
-FAIL TrackEvent constructor, two args assert_equals: ev.track expected object "[object Object]" but got null
-

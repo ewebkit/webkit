@@ -1,4 +1,0 @@
-
-PASS Default event values. 
-FAIL document.createEvent() should work with ProgressEvent. NotSupportedError: DOM Exception 9
-

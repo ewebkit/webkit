@@ -1,5 +1,0 @@
-
-PASS Object.getOwnPropertyNames on HTMLCollection 
-PASS Object.getOwnPropertyNames on HTMLCollection with non-HTML namespace 
-PASS Object.getOwnPropertyNames on HTMLCollection with expando object 
-

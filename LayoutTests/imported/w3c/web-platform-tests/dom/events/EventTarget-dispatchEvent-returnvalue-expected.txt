@@ -1,3 +1,0 @@
-
-PASS Return value of EventTarget.dispatchEvent. 
-

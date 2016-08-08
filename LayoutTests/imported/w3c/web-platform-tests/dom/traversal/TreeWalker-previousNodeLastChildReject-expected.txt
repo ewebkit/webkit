@@ -1,5 +1,0 @@
-Test that previousNode properly respects the filter.
-
-
-PASS Test that previousNode properly respects the filter. 
-

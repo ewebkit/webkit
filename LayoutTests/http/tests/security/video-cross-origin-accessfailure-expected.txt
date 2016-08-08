@@ -1,4 +1,0 @@
-CONSOLE MESSAGE: Cross-origin media resource load denied by Cross-Origin Resource Sharing policy.
-EVENT(error)
-END OF TEST
- 

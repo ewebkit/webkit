@@ -1,6 +1,0 @@
-ΔЙあ叶葉 말 link
-text
-ΔЙあ叶葉 קم
-
-PASS handle unicode chars 
-

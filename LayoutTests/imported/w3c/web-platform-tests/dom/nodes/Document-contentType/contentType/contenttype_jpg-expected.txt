@@ -1,4 +1,0 @@
-
-
-PASS JPG document.contentType === 'image/jpeg' 
-

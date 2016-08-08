@@ -1,6 +1,0 @@
-
-PASS XMLHttpRequest: setRequestHeader() - Content-Type header () 
-PASS XMLHttpRequest: setRequestHeader() - Content-Type header ( ) 
-PASS XMLHttpRequest: setRequestHeader() - Content-Type header (null) 
-PASS XMLHttpRequest: setRequestHeader() - Content-Type header (undefined) 
-

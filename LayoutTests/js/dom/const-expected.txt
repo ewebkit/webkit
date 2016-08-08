@@ -1,9 +1,0 @@
-CONSOLE MESSAGE: SyntaxError: Can't create duplicate variable that shadows a global property: 'bodyId'
-This test checks that const variables can't shadow global object properties. Note that this test expects SyntaxErrors in below
-
-PASS sentinel is "__s__"
-PASS bodyId is document.getElementById('bodyId')
-PASS successfullyParsed is true
-
-TEST COMPLETE
-

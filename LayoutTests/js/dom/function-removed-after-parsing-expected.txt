@@ -1,2 +1,0 @@
-window.CSS.escape still here
-

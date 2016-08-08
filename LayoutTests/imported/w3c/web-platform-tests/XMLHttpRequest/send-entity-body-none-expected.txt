@@ -1,4 +1,0 @@
-
-PASS No content type 
-PASS Explicit content type 
-
