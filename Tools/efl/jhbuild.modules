@@ -174,9 +174,9 @@
       <dep package="gstreamer"/>
       <dep package="gst-plugins-base"/>
     </dependencies>
-    <branch module="rel/libs/efl/efl-1.18.0-beta2.tar.gz" version="1.18.0"
+    <branch module="rel/libs/efl/efl-1.18.0.tar.gz" version="1.18.0"
             repo="download.enlightenment.org"
-            hash="sha256:2a910deeb445b43f0515c5b265a5e1b460a9ae5e23c1449e75c4444336c3e31f">
+            hash="sha256:a90255e97f6b768883276d3e04946798c31bc9bf57da12702ca7c3f4a401ec9f">
     </branch>
   </autotools>
 
