@@ -105,7 +105,11 @@ function installDependenciesWithApt {
         ragel \
         ruby \
         subversion \
-        x11proto-print-dev
+        x11proto-print-dev \
+        libharfbuzz-bin \
+        libsoup2.4-dev \
+        libenchant-dev \
+        libhyphen-dev
 
     # These are dependencies necessary for building WebKitEFL and not available on ARM64.
     apt-get install \
