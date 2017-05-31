@@ -51,6 +51,8 @@
       href="http://download.enlightenment.org"/>
   <repository type="tarball" name="gstreamer"
       href="http://gstreamer.freedesktop.org/src/"/>
+  <repository type="tarball" name="savannah.gnu.org"
+      href="http://download.savannah.gnu.org"/>
 
   <autotools id="cairo" autogen-sh="configure"
              makeargs="CFLAGS='-fno-lto' CXXFLAGS='-fno-lto' LDFLAGS='-fno-lto'">
@@ -107,9 +109,9 @@
   <!-- FIXME: Original download url doesn't work in Korea. So, Bug 133303 changes the url for now.
              Original download url: http://download.savannah.gnu.org/releases/freetype/freetype-2.4.11.tar.bz2 -->
   <tarball id="freetype6">
-    <source href="github.com/shivamidow/freetype/raw/master/freetype-2.4.11.tar.bz2" version="2.4.11"
-            hash="sha256:ef9d0bcb64647d9e5125dc7534d7ca371c98310fec87677c410f397f71ffbe3f"
-            md5sum="b93435488942486c8d0ca22e8f768034" />
+    <source href="download.savannah.gnu.org/releases/freetype/freetype-2.6.1.tar.bz2" version="2.6.1"
+            hash="sha256:2f6e9a7de3ae8e85bdd2fe237e27d868d3ba7a27495e65906455c27722dd1a17"
+            md5sum="35cb8f4d9e5906847901bb39324c2f80" />
   </tarball>
 
   <autotools id="glib"
@@ -174,9 +176,9 @@
       <dep package="gstreamer"/>
       <dep package="gst-plugins-base"/>
     </dependencies>
-    <branch module="rel/libs/efl/efl-1.18.1.tar.gz" version="1.18.1"
+    <branch module="rel/libs/efl/efl-1.19.0.tar.gz" version="1.19.0"
             repo="download.enlightenment.org"
-            hash="sha256:008640c51e90481797984d0cb58a077af746922fb179b4af91ca591c37ad112d">
+            hash="sha256:8b672a2f5751aed6c910e7d48e8594f16fc5b7f69b1158f03354e8bce2fafe6f">
     </branch>
   </autotools>
 

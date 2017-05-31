@@ -1374,7 +1374,8 @@ void EwkView::feedTouchEvents(Ewk_Touch_Event_Type type, double timestamp)
     auto touchPoints = std::make_unique<WKTypeRef[]>(length);
     for (unsigned i = 0; i < length; ++i) {
         int x, y;
-        evas_touch_point_list_nth_xy_get(sd->base.evas, i, &x, &y);
+        // FIXME: efl 1.19 doesn't support below API anymore. We need to find alternative one.
+        // evas_touch_point_list_nth_xy_get(sd->base.evas, i, &x, &y);
         IntPoint position(x, y);
         Evas_Touch_Point_State state = evas_touch_point_list_nth_state_get(sd->base.evas, i);
         int id = evas_touch_point_list_nth_id_get(sd->base.evas, i);
