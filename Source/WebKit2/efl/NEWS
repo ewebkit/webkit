@@ -1,0 +1,36 @@
+ewebkit 1.19
+--------------
+
+What's updated in ewebkit v1.19 ?
+
+  1. ewebkit updates
+   - Start to use efl-1.19.
+   - Comment out an use of evas_touch_point_list_nth_xy_get() because the function was deprecated
+     in efl-1.19.
+
+  2. WebKit core updates
+   - Custom element is enabled
+   - Web Inspector is improved
+   - New features are added to Indexed Database 2.0.
+   - See also release notes for Safari preview release 17
+     (https://webkit.org/blog/7071/release-notes-for-safari-technology-preview-17/)
+
+
+ewebkit 1.18
+--------------
+
+What's updated in ewebkit v1.18 ?
+
+  1. ewebkit updates
+   - Begin to release ewebkit with EFL release
+   - Disable subtle crypto feature because nobody works on it
+   - Support to build on Debian linux
+
+  2. WebKit core updates
+   - Shadow DOM is enabled
+   - ECMAScript 6 specification is supported
+   - MathML is updated
+   - See also release notes for Safari preview release 9
+     (https://webkit.org/blog/6800/release-notes-for-safari-technology-preview-release-9/)
+
+
